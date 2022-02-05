@@ -33,8 +33,14 @@ class AddKataTest {
 
 	 @Test                                               
 	 @DisplayName("2 numbers String With Comma")   
-	 void testAddStringWithTwoNumberAndComma() {
+	 void testAddStringWithTwoNumbersAndComma() {
 		 assertEquals(addKata.Add("1,2"), 3);  
+	 }
+	 
+	 @Test                                               
+	 @DisplayName("x numbers String With Comma")   
+	 void testAddStringWithXNumbersAndComma() {
+		 assertEquals(addKata.Add("1,2,4,5,5,6,6,7,8,9"), 1+2+4+5+5+6+6+7+8+9);  
 	 }
 	  
 
