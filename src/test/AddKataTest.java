@@ -42,6 +42,12 @@ class AddKataTest {
 	 void testAddStringWithXNumbersAndComma() {
 		 assertEquals(addKata.Add("1,2,4,5,5,6,6,7,8,9"), 1+2+4+5+5+6+6+7+8+9);  
 	 }
+	 
+	 @Test                                               
+	 @DisplayName("2 numbers String With Comma and new Line")   
+	 void testAddStringWithTwoNumbersAndCommaAndNewLine() {
+		 assertEquals(addKata.Add("1\\n2,3"), 5);  
+	 }
 	  
 
 }
