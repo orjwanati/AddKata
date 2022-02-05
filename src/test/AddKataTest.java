@@ -59,10 +59,13 @@ class AddKataTest {
 		 RuntimeException exception = assertThrows(RuntimeException.class, () -> addKata.Add("1,\n"));
 		 assertEquals("String Format is Invalid!", exception.getMessage());	 }
 	 
-//	 @Test(expected = Exception.class)
-//	 public void testAddStringWithTwoNumbersAndCommaAndNewLine() throws Exception {
-//		 addKata.Add("1,\n");
-//	 }
-	  
+	 
+	 @Test                                               
+	 @DisplayName("x numbers with delimiter")   
+	 void testAddStringWithDifferentDelimiter() {
+		 assertEquals(addKata.Add("1\n2;3;"), 6);  
+	 }
+	 
+
 
 }
