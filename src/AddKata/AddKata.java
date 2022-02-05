@@ -7,10 +7,12 @@ public class AddKata {
 		int result = 0;
 		
 		if(!numbers.isEmpty()) {
-			result = Integer.parseInt(numbers);
+			String[] numbersArray = numbers.split(",");
+	
+			for (String number : numbersArray) {
+			    result += Integer.parseInt(number.trim());
+			}
 		}
-		
-		
 		return result;
 	}
 

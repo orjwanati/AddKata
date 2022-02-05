@@ -30,7 +30,12 @@ class AddKataTest {
 	 void testAddStringWithOneNumber() {
 		 assertEquals(addKata.Add("1"), 1);  
 	 }
-	 
+
+	 @Test                                               
+	 @DisplayName("2 numbers String With Comma")   
+	 void testAddStringWithTwoNumberAndComma() {
+		 assertEquals(addKata.Add("1,2"), 3);  
+	 }
 	  
 
 }
