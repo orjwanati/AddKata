@@ -21,8 +21,16 @@ class AddKataTest {
 
 	 @Test                                               
 	 @DisplayName("Empty String")   
-	    void testAddEmptyString() {
-	        assertEquals(addKata.Add(""), 0);  
-	    }
+	 void testAddEmptyString() {
+		 assertEquals(addKata.Add(""), 0);  
+	 }
+	 
+	 @Test                                               
+	 @DisplayName("1 number String")   
+	 void testAddStringWithOneNumber() {
+		 assertEquals(addKata.Add("1"), 1);  
+	 }
+	 
+	  
 
 }
