@@ -5,6 +5,8 @@ package test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.ArrayList;
+
 //import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -56,13 +58,24 @@ class AddKataTest {
 	 @DisplayName("Invalid New Line and Comma")   
 	 void testAddStringWithTwoNumbersAndCommaAndNewLine() {
 		 RuntimeException exception = assertThrows(RuntimeException.class, () -> addKata.Add("1,\n"));
-		 assertEquals("String Format is Invalid!", exception.getMessage());	 }
+		 assertEquals("String Format is Invalid!", exception.getMessage());	
+	}
 	 
 	 
 	 @Test                                               
 	 @DisplayName("x numbers with delimiter")   
 	 void testAddStringWithDifferentDelimiter() {
 		 assertEquals(addKata.Add("//[;]\n1\n2;3;"), 6);  
+	 }
+	 
+	 
+	 @Test                                               
+	 @DisplayName("x numbers String With negative numbers")   
+	 void testAddStringWithNegativeNumbers() {
+		 
+
+		 RuntimeException exception = assertThrows(RuntimeException.class, () -> addKata.Add("1,2,-4,5,-5,6,-6,7,-8,9"));
+		 assertEquals("negatives not allowed. Found the following negative Numbers: [-4, -5, -6, -8]", exception.getMessage());
 	 }
 	 
 

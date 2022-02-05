@@ -1,6 +1,7 @@
 
 package AddKata;
 
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class AddKata {
@@ -8,6 +9,7 @@ public class AddKata {
 	public int Add(String numbers) {
 		int result = 0;
 		String numberString = numbers;
+		ArrayList<Integer> negativeNumbers = new ArrayList<Integer>();
 
 		if(!numbers.isEmpty()) {
 			
@@ -30,8 +32,18 @@ public class AddKata {
 				}
 				
 				for (String number2 : numbersArray2) {
-					result += Integer.parseInt(number2.trim());
+					int num = Integer.parseInt(number2.trim());
+					
+					if(num < 0) {
+						negativeNumbers.add(num);
+					} else {
+						result += num;
+					}
 				}
+			}
+			
+			if(!negativeNumbers.isEmpty()) {
+	            throw new RuntimeException("negatives not allowed. Found the following negative Numbers: " + negativeNumbers.toString());    
 			}
 		}
 		return result;
