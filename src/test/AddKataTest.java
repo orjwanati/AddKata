@@ -1,5 +1,6 @@
 package test;
 
+import static org.junit.Assert.assertNotNull;
 //import static org.junit.Assert.fail;
 //import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -84,6 +85,21 @@ class AddKataTest {
 	 void testAddStringWithWhiteSpace() {
 		 assertEquals(addKata.Add("  1 , 2 "), 3);  
 	 } 
+	 
+	 
+	 @Test                                               
+	 @DisplayName("; delimiter but No Delimiter Line")   
+	 void testAddStringWithNoDelimiterLine() {
+		 RuntimeException exception = assertThrows(RuntimeException.class, () -> addKata.Add("1\n2;3;"));
+		 assertNotNull(exception);
+	 }
+	 
+	 @Test                                               
+	 @DisplayName("String with non integer Values")   
+	 void testAddStringWithNoInteger() {
+		 RuntimeException exception = assertThrows(RuntimeException.class, () -> addKata.Add("1\ntest;3;"));
+		 assertNotNull(exception);
+	 }
 	 
 
 
