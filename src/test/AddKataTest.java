@@ -66,7 +66,7 @@ class AddKataTest {
 	 @Test                                               
 	 @DisplayName("x numbers with delimiter")   
 	 void testAddStringWithDifferentDelimiter() {
-		 assertEquals(addKata.Add("//[;]\n1\n2;3;"), 6);  
+		 assertEquals(addKata.Add("//;\n1\n2;3;"), 6);  
 	 }
 	 
 	 
