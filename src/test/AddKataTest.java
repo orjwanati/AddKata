@@ -3,6 +3,7 @@ package test;
 //import static org.junit.Assert.fail;
 //import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
 //import org.junit.jupiter.api.BeforeAll;
@@ -51,7 +52,17 @@ class AddKataTest {
 		 assertEquals(addKata.Add("1\n2,3"), 6);  
 	 }
 
-
+	 
+	 @Test                                               
+	 @DisplayName("Invalid New Line and Comma")   
+	 void testAddStringWithTwoNumbersAndCommaAndNewLine() {
+		 RuntimeException exception = assertThrows(RuntimeException.class, () -> addKata.Add("1,\n"));
+		 assertEquals("String Format is Invalid!", exception.getMessage());	 }
+	 
+//	 @Test(expected = Exception.class)
+//	 public void testAddStringWithTwoNumbersAndCommaAndNewLine() throws Exception {
+//		 addKata.Add("1,\n");
+//	 }
 	  
 
 }
