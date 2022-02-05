@@ -112,6 +112,22 @@ class AddKataTest {
 	 void testAddStringWithDifferentDelimiter3() {
 		 assertEquals(addKata.Add("//sd\n1\n2sd3sd"), 6);  
 	 }
+	 
+	 @Test                                               
+	 @DisplayName("x numbers with Special delimiter .")   
+	 void testAddStringWithDifferentSpecialDelimiter1() {
+		 assertEquals(addKata.Add("//\\.\n1\n2.3."), 6);  
+	 }
+	 
+	 
+	 @Test                                               
+	 @DisplayName("x numbers with Special delimiter $")   
+	 void testAddStringWithDifferentSpecialDelimiter2() {
+		 assertEquals(addKata.Add("//\\$\n1\n2$3$"), 6);  
+	 }
+	 
+	
+
 
 
 }
