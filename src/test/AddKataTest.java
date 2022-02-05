@@ -78,6 +78,13 @@ class AddKataTest {
 		 assertEquals("negatives not allowed. Found the following negative Numbers: [-4, -5, -6, -8]", exception.getMessage());
 	 }
 	 
+	 
+	 @Test                                               
+	 @DisplayName("2 numbers String With White Space")   
+	 void testAddStringWithWhiteSpace() {
+		 assertEquals(addKata.Add("  1 , 2 "), 3);  
+	 } 
+	 
 
 
 }
