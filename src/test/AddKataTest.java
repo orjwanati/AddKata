@@ -101,6 +101,17 @@ class AddKataTest {
 		 assertNotNull(exception);
 	 }
 	 
+	 @Test                                               
+	 @DisplayName("x numbers with new delimiter &")   
+	 void testAddStringWithDifferentDelimiter2() {
+		 assertEquals(addKata.Add("//&\n1\n2&3&"), 6);  
+	 }
+	 
+	 @Test                                               
+	 @DisplayName("x numbers with new delimiter sd")   
+	 void testAddStringWithDifferentDelimiter3() {
+		 assertEquals(addKata.Add("//sd\n1\n2sd3sd"), 6);  
+	 }
 
 
 }
