@@ -46,7 +46,7 @@ class AddKataTest {
 	 @Test                                               
 	 @DisplayName("2 numbers String With Comma and new Line")   
 	 void testAddStringWithTwoNumbersAndCommaAndNewLine() {
-		 assertEquals(addKata.Add("1\\n2,3"), 5);  
+		 assertEquals(addKata.Add("1\n2,3"), 6);  
 	 }
 	  
 
