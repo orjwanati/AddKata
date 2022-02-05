@@ -14,12 +14,13 @@ public class AddKata {
 		if(!numbers.isEmpty()) {
 			
 			String delimiter = ",";
-			if(numbers.startsWith("//[")) {
-				numberString = numbers.substring(3);
-				int endIndex = numbers.indexOf("]\n");
+			if(numbers.startsWith("//")) {
+				int startIndex = "//".length();
+				numberString = numbers.substring(startIndex);
+				int endIndex = numbers.indexOf("\n");
 				if(endIndex != -1) {
-					numberString = numbers.substring(endIndex+2);
-					delimiter = numbers.substring(3, endIndex);
+					numberString = numbers.substring(endIndex+"\n".length());
+					delimiter = numbers.substring(startIndex, endIndex);
 				}
 			}
 			
