@@ -127,12 +127,18 @@ class AddKataTest {
 	 }
 	 
 	 @Test                                               
-	 @DisplayName("String with invalid delimiter Line")   
-	 void testAddStringWithInvalidDelimterLine() {
-		 RuntimeException exception = assertThrows(RuntimeException.class, () -> addKata.Add("//;1\n;3;"));
+	 @DisplayName("String with invalid delimiter Line 1")   
+	 void testAddStringWithInvalidDelimterLine1() {
+		 RuntimeException exception = assertThrows(RuntimeException.class, () -> addKata.Add("//;1;3;"));
 		 assertEquals("String Delimiter Format is Invalid!", exception.getMessage());
 	 }
 
+	 @Test                                               
+	 @DisplayName("String with invalid delimiter Line 2")   
+	 void testAddStringWithInvalidDelimterLine2() {
+		 RuntimeException exception = assertThrows(RuntimeException.class, () -> addKata.Add("//;1\\n2;3;"));
+		 assertNotNull(exception);
+	 }
 
 
 }
