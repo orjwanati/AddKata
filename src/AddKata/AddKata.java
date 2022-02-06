@@ -2,39 +2,40 @@
 package AddKata;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.regex.Pattern;
 
 public class AddKata {
 
 	public int Add(String numbers) {
 		int result = 0;
 		String delimiter = ",";
-		
+		String delimiterHead  = "//";
 		ArrayList<Integer> negativeNumbers = new ArrayList<Integer>();
 
 		String numberStrings = numbers;
 
 		if(!numberStrings.isEmpty()) {
 			
-			// read delimiter line if exists
-			String delimiterHead  = "//";
-			String delimiterTail  = "\n";
+			// separate lines
+			ArrayList<String> numbersArray = new ArrayList<>(Arrays.asList(numberStrings.split("\n")));
 			
-			if(numbers.startsWith(delimiterHead)) {
+			// check if the first item is a delimiter
+			if(numbersArray.get(0).startsWith(delimiterHead)) {
 				int startIndex = delimiterHead.length();
-				numberStrings = numbers.substring(startIndex);
-				int endIndex = numbers.indexOf(delimiterTail);
-				if(endIndex != -1) {
-					numberStrings = numbers.substring(endIndex+delimiterTail.length());
-					delimiter = numbers.substring(startIndex, endIndex);
-				} else {
-		            throw new RuntimeException("String Delimiter Format is Invalid!");    
-				}
+				delimiter = numbersArray.get(0).substring(startIndex);
+			
+				// remove delimiter line
+				numbersArray.remove(0);
+				
+				// check delimiter and array are still valid
+				if(delimiter.isEmpty() || numbersArray.isEmpty()) {
+					throw new RuntimeException("String Delimiter Format is Invalid!");
+				}				
 			}
-			
-			
-			String[] numbersArray = numberStrings.split("\n");
 
 			for (String number : numbersArray) {
+				//separate lines by delimiter
 				String[] numbersArray2 = number.split(delimiter);
 				
 				// handle case where two numbers are separated by the delimiter and \n
@@ -47,6 +48,7 @@ public class AddKata {
 					
 					if(num < 0) {
 						negativeNumbers.add(num);
+						
 					} else {
 						result += num;
 					}
@@ -57,6 +59,9 @@ public class AddKata {
 	            throw new RuntimeException("Negatives not Allowed. Found the Following Negative Numbers: " + negativeNumbers.toString());    
 			}
 		}
+		
+		System.out.println("numbers: " + numbers + "\t\tresult = " +  result);
+
 		return result;
 	}
 
