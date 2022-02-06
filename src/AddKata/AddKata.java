@@ -2,32 +2,42 @@
 package AddKata;
 
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 public class AddKata {
 
 	public int Add(String numbers) {
 		int result = 0;
-		String numberString = numbers;
+		String delimiter = ",";
+		
 		ArrayList<Integer> negativeNumbers = new ArrayList<Integer>();
 
-		if(!numbers.isEmpty()) {
+		String numberStrings = numbers;
+
+		if(!numberStrings.isEmpty()) {
 			
-			String delimiter = ",";
-			if(numbers.startsWith("//")) {
-				int startIndex = "//".length();
-				numberString = numbers.substring(startIndex);
-				int endIndex = numbers.indexOf("\n");
+			// read delimiter line if exists
+			String delimiterHead  = "//";
+			String delimiterTail  = "\n";
+			
+			if(numbers.startsWith(delimiterHead)) {
+				int startIndex = delimiterHead.length();
+				numberStrings = numbers.substring(startIndex);
+				int endIndex = numbers.indexOf(delimiterTail);
 				if(endIndex != -1) {
-					numberString = numbers.substring(endIndex+"\n".length());
+					numberStrings = numbers.substring(endIndex+delimiterTail.length());
 					delimiter = numbers.substring(startIndex, endIndex);
+				} else {
+		            throw new RuntimeException("String Delimiter Format is Invalid!");    
 				}
 			}
 			
-			String[] numbersArray = numberString.split("\n");
+			
+			String[] numbersArray = numberStrings.split("\n");
 
 			for (String number : numbersArray) {
 				String[] numbersArray2 = number.split(delimiter);
+				
+				// handle case where two numbers are separated by the delimiter and \n
 				if(number.contains(delimiter) && numbersArray2.length == 1) {
 		            throw new RuntimeException("String Format is Invalid!");    
 				}
@@ -44,7 +54,7 @@ public class AddKata {
 			}
 			
 			if(!negativeNumbers.isEmpty()) {
-	            throw new RuntimeException("negatives not allowed. Found the following negative Numbers: " + negativeNumbers.toString());    
+	            throw new RuntimeException("Negatives not Allowed. Found the Following Negative Numbers: " + negativeNumbers.toString());    
 			}
 		}
 		return result;

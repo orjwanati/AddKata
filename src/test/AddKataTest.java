@@ -76,7 +76,7 @@ class AddKataTest {
 		 
 
 		 RuntimeException exception = assertThrows(RuntimeException.class, () -> addKata.Add("1,2,-4,5,-5,6,-6,7,-8,9"));
-		 assertEquals("negatives not allowed. Found the following negative Numbers: [-4, -5, -6, -8]", exception.getMessage());
+		 assertEquals("Negatives not Allowed. Found the Following Negative Numbers: [-4, -5, -6, -8]", exception.getMessage());
 	 }
 	 
 	 
@@ -126,7 +126,12 @@ class AddKataTest {
 		 assertEquals(addKata.Add("//\\$\n1\n2$3$"), 6);  
 	 }
 	 
-	
+	 @Test                                               
+	 @DisplayName("String with invalid delimiter Line")   
+	 void testAddStringWithInvalidDelimterLine() {
+		 RuntimeException exception = assertThrows(RuntimeException.class, () -> addKata.Add("//;1\n;3;"));
+		 assertEquals("String Delimiter Format is Invalid!", exception.getMessage());
+	 }
 
 
 
